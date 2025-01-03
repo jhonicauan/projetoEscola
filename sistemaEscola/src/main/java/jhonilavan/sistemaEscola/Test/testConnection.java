@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class testConnection {
     @GetMapping("/connection")
-    public String testConnection(){
+    public String testConnect(){
         return "Conectado com sucesso";
     }
 }
