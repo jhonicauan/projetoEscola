@@ -19,11 +19,11 @@ public class userController {
 
     @SuppressWarnings("rawtypes")
     @PostMapping("/add")
-    public ResponseEntity createUser(@RequestBody userModel user){
+    public ResponseEntity createUser(@RequestBody modelUser user){
 
         try{
-            boolean checkUsername = userRepository.findByUsername(user.getUsername()) == null;
-            if(!checkUsername){
+            boolean checkEnrollment = userRepository.findByEnrollment(user.getEnrollment()) == null;
+            if(!checkEnrollment){
                 return ResponseEntity.badRequest().body("nome de usuario não esta disponivel.");
             }
 
@@ -46,7 +46,7 @@ public class userController {
 
     @PostMapping("/login")
     public boolean checkLogin(@RequestBody Map<String,String> login){
-        userModel checkUser = userRepository.findByUsername(login.get("username"));
+        modelUser checkUser = userRepository.findByEnrollment(login.get("enrollment"));
         if(checkUser == null){
             return false;
         }
